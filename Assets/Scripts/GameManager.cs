@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     public void StartPlayScene()
     {
         playerName = inputField.text;
-        Debug.Log($"El nombre del player es: {playerName}");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public static void SaveBestScoreData(int points)
