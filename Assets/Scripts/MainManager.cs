@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class MainManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class MainManager : MonoBehaviour
 
     private void SetBestScoreText()
     {
-        string playerName = GameManager.PlayerName;
+        string playerName = GameManager.PlayerNameBestScore;
         int playerBestScore = GameManager.PlayerBestScore;
         bestScore.text = $"Best Score: {playerBestScore} Player Name: {playerName}";
         if(string.IsNullOrEmpty(playerName) || playerBestScore == 0)
@@ -90,17 +91,8 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
         if(m_Points > GameManager.PlayerBestScore)
         {
-
+            GameManager.SaveBestScoreData(m_Points);
         }
     }
 }
-public class BestScore
-{
-    public string name;
-    public int score;
-    public BestScore(string name, int score)
-    {
-        this.name = name;
-        this.score = score;
-    }
-}
+
